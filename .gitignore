@@ -35,3 +35,4 @@
 
 # CMake Files
 build/*
+bin/ytmp3-dl
