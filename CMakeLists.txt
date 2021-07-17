@@ -3,6 +3,8 @@ project(ytmp3-dl VERSION 1.0.0)
 
 # Place the executable in the bin directory
 set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
+set(CMAKE_CXX_FLAGS -pthread)
+set(CMAKE_CXX_STANDARD 11)
 
 file(GLOB_RECURSE SOURCES "src/*.cpp")
 file(GLOB_RECURSE HEADERS "include/ytmp3-dl/*.hpp")

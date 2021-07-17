@@ -1,5 +1,6 @@
 {
 	"enableDecor": true,
-	"enableColoredLines": true,
-	"lineColor": "blue"
+	"enableColoredLines": false,
+	"lineColor": "blue",
+	"downloader": "youtube-dl"
 }
