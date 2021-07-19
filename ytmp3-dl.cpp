@@ -1,5 +1,7 @@
 // A Cpp code by Mushfiqur Rahman Abir AKA Abir-Tx
 // Developer Profile: https://www.github.com/Abir-Tx
+// Project started on July 2021
+
 #include "include/alib/alib.hpp"
 #include <iostream>
 #include "include/json/json.h"
@@ -31,6 +33,5 @@ int main(int argc, char **argv)
 
 	Downloader dl(downUrl, allData.get("downloader", "youtube-dl").asString());
 	dl.quickDownload();
-
 	return 0;
 }
