@@ -17,6 +17,8 @@ int main(int argc, char **argv)
 	config >> allData;
 
 	/* Startup Decoration struff */
+	if (allData.get("clearScreen", false).asBool())
+		alib::clrscr();
 	if (allData.get("enableDecor", false).asBool())
 		alib::decorateMe("YTMP3-DL", 1, " ", true);
 	if (allData.get("enableColoredLines", false).asBool())
