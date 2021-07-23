@@ -6,10 +6,11 @@
 #include <iostream>
 #include "include/json/json.h"
 #include "include/ytmp3-dl/downloader.hpp"
+#include "include/ytmp3-dl/utility.hpp"
 
 #include <fstream>
 #include <thread>
-int main(int argc, char **argv)
+int main(int argc, char const *argv[])
 {
 	/* Json config condes & settings */
 	std::string config_file = "config.json";
@@ -26,12 +27,22 @@ int main(int argc, char **argv)
 	if (allData.get("enableColoredLines", false).asBool())
 		alib::horizontalLine(1, allData.get("lineColor", "white").asString());
 
-	std::cout << "Enter download URL: ";
-	std::string downUrl;
-	std::cin >> downUrl;
-	std::cout << std::endl;
+	/* Runtime argument checks */
+	if (argc >= 2)
+	{
+		const char *sysArgs[] = {"--version", "-v"};
+		if (std::strcmp(argv[1], sysArgs[0]) == 0 || std::strcmp(argv[1], sysArgs[1]) == 0)
+			verPrinter();
+	}
+	else
+	{
+		std::cout << "Enter download URL: ";
+		std::string downUrl;
+		std::cin >> downUrl;
+		std::cout << std::endl;
 
-	Downloader dl(downUrl, allData.get("downloader", "youtube-dl").asString());
-	dl.quickDownload();
+		Downloader dl(downUrl, allData.get("downloader", "youtube-dl").asString());
+		dl.quickDownload();
+	}
 	return 0;
 }
